@@ -15,12 +15,12 @@ The dataset used includes climate and agricultural data spanning from 1991 to 20
 <h1> Visualization and Analyses </h1>
 
 Ths project consists of the following visualizatiions:
-    1. <b>Mean temperature change over time by country:</b> A line graph showing how the average temperature has changed in each country.
-    2. <b>CO2 emissions change over time by country:</b> A line graph visualizing CO2 emissions trends by country over the years.
-    3. <b>Crop yield change over time by country:</b> A line graph illustrating the change in crop yield in each country. 
-    4. <b>Mean precipitation over time by country:</b> A graph showing how precipitation levels have fluctuated by country.
-    5. <b>CO2 emissions vs. crop yield correlation:</b> A scatter plot with a regression line exploring the potential relationship between CO2 emission and crop            yield.
-    6. <b>Wordcloud of adaptation strategies:</b> A wordcloud displaying the most commonly used adaptation strategies across the dataset.
+    1. Mean temperature change over time by country: A line graph showing how the average temperature has changed in each country.
+    2. CO2 emissions change over time by country: A line graph visualizing CO2 emissions trends by country over the years.
+    3. Crop yield change over time by country: A line graph illustrating the change in crop yield in each country. 
+    4. Mean precipitation over time by country: A graph showing how precipitation levels have fluctuated by country.
+    5. CO2 emissions vs. crop yield correlation: A scatter plot with a regression line exploring the potential relationship between CO2 emission and crop            yield.
+    6. Wordcloud of adaptation strategies: A wordcloud displaying the most commonly used adaptation strategies across the dataset.
 
 <h1> Repository structure </h1>
 
@@ -32,13 +32,13 @@ This repository contains the following key files:
 <h1> How to run this project </h1>
 
 1. Clone the repository:
-    git clone https://github.com/your-username climate-change-agriculture-visualization.git
+    git clone https://github.com/AshyBB climate-change-agriculture-visualization.git
     cd climate-change-agriculture-visualization
 2. Install the required R packages: You will need the following R libraries:
-    install. packages(c("tidyverse", "dplyr", "wordcloud", "ggwordcloud", "tm"))
+    install. packages(c("tidyverse", "dplyr", "wordcloud", "ggwordcloud", "tm", "RColorBrewer", "readr"))
 3. Run the R Script: Open the climate_change_visualizations.R script in RStudio or any R environment, and run it to generate the visualizations. 
 
-#Key Findings
+<h1>Key Findings</h1>
 
 * Rising Temperatures and CO2 Emissions: Most countries show a steady increase in both temperature and CO2 emissions, signaling ongoing climate change.
 * Crop Yield Trends: Crop yields vary significantly across countries, with some regions demonstrating resilience and others experiencing declines.
