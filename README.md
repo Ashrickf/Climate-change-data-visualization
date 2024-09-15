@@ -14,12 +14,12 @@ The dataset used includes climate and agricultural data spanning from 1991 to 20
 
 <h1> Visualization and Analyses </h1>
 
-Ths project consists of the following visualizatiions:
+Ths project consists of the following visualizations:
     1. Mean temperature change over time by country: A line graph showing how the average temperature has changed in each country.
     2. CO2 emissions change over time by country: A line graph visualizing CO2 emissions trends by country over the years.
     3. Crop yield change over time by country: A line graph illustrating the change in crop yield in each country. 
     4. Mean precipitation over time by country: A graph showing how precipitation levels have fluctuated by country.
-    5. CO2 emissions vs. crop yield correlation: A scatter plot with a regression line exploring the potential relationship between CO2 emission and crop            yield.
+    5. CO2 emissions vs. crop yield correlation: A scatter plot with a regression line exploring the potential relationship between CO2 emission and crop                  yield.
     6. Wordcloud of adaptation strategies: A wordcloud displaying the most commonly used adaptation strategies across the dataset.
 
 <h1> Repository structure </h1>
