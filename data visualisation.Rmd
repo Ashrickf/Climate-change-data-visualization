@@ -1,0 +1,227 @@
+---
+title: "Climate change effect on agriculture"
+author: "Ashrick Frans"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+<h1> Introduction</h1>
+
+<p> Climate change poses one of the most significant challenges to global agriculture in the 21st century. With rising temperatures, fluctuating precipitation patterns and increaing CO2 emissions, these are altering the delicate balance that supports food production. As countries grapple with these environmental changes, the impact on crop yield, food security and sustainable agricultural practices becomes more pronounced. </p> 
+
+<p> This project aims to explore the effects of climate change on agriculture by visualizing key climate variables - such as temperature, CO2 emissions and precipitation - and their relationship to agricultural productivity. This dataset (obtained from Kaggle.com) provides a comprehensive view of how these factors have evolved from 1991 to 2024, capturing changes over time and across different countries. </p>
+
+<p> By using data visualization techniques, this project will help to uncover trends, correlations and potential strategies for adapting to climate-induced challenges. This analysis will not only serve as an exploratory tool but will also provide valuable insights for stakeholders such as policymakers, environmental scientist and agricultural planners to better understand the ongoing transformations in global agriculture. </p>
+
+<h1> Problem statement </h1>
+
+<p> The agricultural sector is highly vulnerable to impacts of climate change. With the increasing severity of temperature fluctuations, CO2 emission and unpredictable weather patterns, understanding how these factors influence crop yields and agricultural productivity is crucial for developuing effective adaptation strategies. 
+
+<p> This project seeks to address the following questions : </p> 
+<ul>
+  <li>How have temperature, CO2 emission and other climate variables changed over the years from 1991 to 2024? </li>
+  <li> What is the relationship between climate variables and crop yield and how does this relationship vary by country? </li>
+  <li> Are there significant correlations between different climate factors, and can we forecast future trends to predict their impact on agriculture? </li>
+  <li> what adaptation strategies are most commonly implemented and how effective are they in mitigating the effects of climate change on agriculture? </li>
+</p>
+
+<p> The ultimate goal of this project is to provide a clear, data-driven understanding of the climate-agriculture nexus and to identify patterns that will help policymakers and researchers develop sustainable agricultural practives in the face of ongoing environmental changes. </p>
+
+```{r loading libraries and packages}
+library(tidyverse)
+library(lubridate)
+library(readr)
+```
+
+
+```{r reading data and assigning it to a new, more concise name}
+data <- read_csv("climate_change_impact_on_agriculture_2024.csv")
+
+View(data)
+
+head(data)
+```
+
+
+```{r renaming columns in dataframe}
+colnames(data) <- c("Year", 
+                    "Country",
+                    "Region", 
+                    "Crop type", 
+                    "Mean temp.(°C)",
+                    "Total precip.(mm)", 
+                    "CO2 emissions (MT)",
+                    "Crop yield (MT per HA)", 
+                    "Extreme weather events", 
+                    "Irrigation access(%)", 
+                    "Pesticide use(kg per HA)", 
+                    "Fertilizer use(kg per HA)", 
+                    "Soil health Index", 
+                    "Adaptation strategy", 
+                    "Economic impact(Million USD)")
+head(data)
+```
+```{r viewing data in dataset}
+glimpse(data)
+unique(data$`Crop type`)
+```
+
+```{r extracting mean temperature, country and year and displaying graph}
+Temp_change <- data %>%
+  select(Year, Country, `Mean temp.(°C)`)
+
+Temp_change %>%
+  ggplot(aes(x = Year, 
+             y = `Mean temp.(°C)`, 
+             colour = Country)) +
+  geom_smooth(method = "loess",
+              se = FALSE) +
+  facet_wrap(~ Country) + 
+  theme_bw() +
+  labs(title = "Mean temperature change over time by country", 
+       x = "Year", 
+       y = "Mean temperature change (°C)") +
+  scale_x_continuous(breaks = c(1990, 2024)) +
+    theme(panel.background = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        strip.background = element_blank(), 
+        legend.position = "None", 
+        plot.title = element_text(hjust = 0.5), 
+        panel.spacing = unit(1, "lines"))
+        #strip.text = element_text(face = "Bold")) 
+        #axis.line = element_line(colour = "black"))
+```
+<p> This graph represent the mean temperature change in different countries between 1991 and 2024. </p>
+
+```{r extracting CO2 emission and country and displaying graphs} 
+CO2_emissions <- data %>%
+  select(Year, Country, `CO2 emissions (MT)`)
+
+CO2_emissions %>%
+  ggplot(aes(x = Year, 
+             y = `CO2 emissions (MT)`, 
+             colour = Country)) +
+  geom_smooth(method = "loess",
+              se = FALSE) +
+  facet_wrap(~ Country) +
+  theme_bw()
+
+```
+<p> This graph shows the mean CO2 emission (in metric tonnes) in different countries from 1991 to 2024. For most countries, the CO2 emissions have increase with some countries already have mitigation plans that resulted in a decline in CO2 emission like Cananda, Brazil and Russia. </p>
+
+```{r setup, include=TRUE}
+Crop_yield <- data %>%
+  select(`Crop yield (MT per HA)`, Country, Year)
+
+Crop_yield %>%
+  ggplot(aes(x = Year, 
+             y = `Crop yield (MT per HA)`,
+             colour = Country)) +
+  geom_smooth(method = "loess", 
+              se = FALSE) +
+  facet_wrap(~ Country) +
+  labs(title = "Crop yield over time by country", 
+       x = "Year", 
+       y = "Crop yield (MT per HA)") +
+  theme_bw() +
+   scale_x_continuous(breaks = c(1990, 2024)) +
+    theme(panel.background = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        strip.background = element_blank(), 
+        legend.position = "None", 
+        plot.title = element_text(hjust = 0.5), 
+        panel.spacing = unit(1, "lines"))
+```
+<p> This graph shows the crop yield (measured in metric tonnes per hectares) in different countries from 1991 to 2024. 
+
+```{r rainfall or precipitation patterns}
+Rainfall <- data %>%
+  select(Year, `Total precip.(mm)`, Country)
+
+Rainfall %>%
+  ggplot(aes(x = Year, 
+             y = `Total precip.(mm)`, 
+             colour = Country)) +
+  geom_smooth(method = "loess", 
+              se = FALSE) +
+  facet_wrap(~ Country) +
+  theme_bw() +
+   scale_x_continuous(breaks = c(1990, 2024)) +
+    theme(panel.background = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        strip.background = element_blank(), 
+        legend.position = "None", 
+        plot.title = element_text(hjust = 0.5), 
+        panel.spacing = unit(1, "lines"))
+```
+
+```{r Correlation between CO2 and Crop yield}
+Crop_yield_vs_CO2 <- data %>%
+  select(`CO2 emissions (MT)`, `Crop yield (MT per HA)`, Country)
+
+Crop_yield_vs_CO2 %>%
+  ggplot(aes(x = `CO2 emissions (MT)`, 
+             y = `Crop yield (MT per HA)`, 
+             colour = Country)) +
+  geom_point()+
+  geom_smooth(method = "lm", 
+              se = FALSE) +
+  theme_bw() +
+  labs(title = "Correlation between CO2 emission and crop yield")
+```
+
+
+```{r wordcloud with adaptation strategy}
+unique(data$`Adaptation strategy`)
+
+#install.packages("tm")
+#install.packages("worldcloud")
+library(tm)
+library(RColorBrewer)
+library(wordcloud)
+library(ggwordcloud)
+library(dplyr)
+
+Strategy <- data %>%
+  select(`Adaptation strategy`) 
+#strat_tibble <- as.tibble(Strategy)
+
+# Count the frequency of each adaptation strategy
+strategy_freq <- Strategy %>%
+  group_by(`Adaptation strategy`) %>%
+  summarise(n = n())  # Count the occurrences of each strategy 
+
+# Create the word cloud using ggwordcloud
+strategy_freq %>%
+  ggplot(aes(label = `Adaptation strategy`, 
+             size = log(n), 
+             colour = n )) +
+  geom_text_wordcloud(area_corr = TRUE) +
+  scale_size_area(max_size = 15) +
+  theme_minimal() +
+  labs(title = "Word Cloud of Adaptation Strategies") +
+  theme(plot.title = element_text(hjust = 0.5))
+print(strategy_freq)
+
+```
+<p> This wordcloud shows the different adaptation strategies that has been used since 1991 to 2024. The colours indicate how frequent or how often this strategy has been used in various countries. For example, the light blue colour indicates that this strategy has been used the most. This can also be seen from the small table generated as a tibble. </p>
+
+
+<h1> Conclusion </h1>
+
+<p> This project provides an insightful exploration of the complex relationship between climate change and agricultural productivity across multiple countries. By visualizing key climate variables, such as mean temperature, CO2 emission, precipitation and crop yield over time, several important trends have emerged.</p>
+
+<p> The analysis of mean temperature change over time reveals a consistent rise in most countries, underscoring the global nature of climate change. Similarly, CO2 emissions have increased across many regions, reflecting the ongoing industrialization and its environmental consequences. These changes in the climate variables are directly linked to agricultural outcomes, as seen in the crop yield trends, which vary significantly by country, likely due to differences in adaptation strategies, geographic conditions and agricultural practices. </p>
+
+<p> The correlation analysis between CO2 emissions and crop yield further highlights the intricate interplay between emissions and agricultural productivity. While some countries demonstrate a negative relationship between rising emissions and crop yields, others seem to adapt more effectively, possibly through technological advancements or sustainable farming practices. </p>
+
+<p> The precipitation analysis shows fluctuating patterns that can have direct consequences on water availability for crops. Combined with temperature changes, this highlights the dual impact of climate variables on crop production and sustainability. </p>
+
+<p> The wordcloud of adaptation strategies provides a visual summary of how countries are responding to these challenges. The most frequently used strategies stand out, demonstrating the global emphasis on certain practices such as crop diversification, water management and the adoption of resilient crop varieties. </p>
+
+<p> In summary, this project underscores the pressing need for targeted, country-specific adaptation strategies to mitigate the effects of climate change on agriculture. By understanding these trends and correlations, policymakers, researchers and farmers can develop more informed and effective solutions for sustainable agricultural practices in an era of accelerating climate change. </p>
