@@ -1,4 +1,4 @@
-#Climate-change-impact-on-agriculture
+<h1> Climate-change-impact-on-agriculture </h1>
 
 This project explores the impact of climate change on agricultural productivity across multiple countries from 1991 to 2024. By leveraging data visualization techniques in R, we analyze key climate variables such as temperature, CO2 emissions and precipitation and their relationships with crop yields and adaptation strategies. This project provides valuable insights into the trends, correlations and adaptation efforts across different regions.
 
@@ -15,12 +15,12 @@ The dataset used includes climate and agricultural data spanning from 1991 to 20
 <h1> Visualization and Analyses </h1>
 
 Ths project consists of the following visualizatiions:
-    1. Mean temperature change over time by country: A line graph showing how the average temperature has changed in each country.
-    2. CO2 emissions change over time by country: A line graph visualizing CO2 emissions trends by country over the years.
-    3. Crop yield change over time by country: A line graph illustrating the change in crop yield in each country. 
-    4. Mean precipitation over time by country: A graph showing how precipitation levels have fluctuated by country.
-    5. CO2 emissions vs. crop yield correlation: A scatter plot with a regression line exploring the potential relationship between CO2 emission and crop yield.
-    6. Wordcloud of adaptation strategies: A wordcloud displaying the most commonly used adaptation strategies across the dataset.
+    1. <b>Mean temperature change over time by country:</b> A line graph showing how the average temperature has changed in each country.
+    2. <b>CO2 emissions change over time by country:</b> A line graph visualizing CO2 emissions trends by country over the years.
+    3. <b>Crop yield change over time by country:</b> A line graph illustrating the change in crop yield in each country. 
+    4. <b>Mean precipitation over time by country:</b> A graph showing how precipitation levels have fluctuated by country.
+    5. <b>CO2 emissions vs. crop yield correlation:</b> A scatter plot with a regression line exploring the potential relationship between CO2 emission and crop            yield.
+    6. <b>Wordcloud of adaptation strategies:</b> A wordcloud displaying the most commonly used adaptation strategies across the dataset.
 
 <h1> Repository structure </h1>
 
