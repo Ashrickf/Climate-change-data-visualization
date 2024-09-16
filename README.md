@@ -32,8 +32,8 @@ This repository contains the following key files:
 <h1> How to run this project </h1>
 
 1. Clone the repository:
-    git clone https://github.com/AshyBBclimate-change-agriculture-visualization.git
-    cd climate-change-agriculture-visualization
+   [ git clone https://github.com/AshyBBclimate-change-agriculture-visualization.git
+    cd climate-change-agriculture-visualization](https://github.com/Ashrickf/Climate-change-data-visualization.git)
 2. Install the required R packages: You will need the following R libraries:
     install. packages(c("tidyverse", "dplyr", "wordcloud", "ggwordcloud", "tm", "RColorBrewer", "readr"))
 3. Run the R Script: Open the climate_change_visualizations.R script in RStudio or any R environment, and run it to generate the visualizations. 
